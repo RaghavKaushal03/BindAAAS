@@ -91,28 +91,20 @@
 </template>
 
 <script>
-
 	// Bar chart for "Active Users" card.
 	import CardBarChart from '../components/Cards/CardBarChart' ;
-
 	// Line chart for "Sales Overview" card.
 	import CardLineChart from '../components/Cards/CardLineChart' ;
-
 	// Counter Widgets
 	import WidgetCounter from '../components/Widgets/WidgetCounter' ;
-
 	// "Projects" table component.
 	import CardProjectTable from '../components/Cards/CardProjectTable' ;
-
 	// Order History card component.
 	import CardOrderHistory from '../components/Cards/CardOrderHistory' ;
-
 	// Information card 1.
 	import CardInfo from '../components/Cards/CardInfo' ;
-
 	// Information card 2.
 	import CardInfo2 from '../components/Cards/CardInfo2' ;
-
 	// Counter Widgets stats
 	const stats = [
 		{
@@ -161,7 +153,6 @@
 						</svg>`,
 		},
 	] ;
-
 	// "Projects" table list of columns and their properties.
 	const tableColumns = [
 		{
@@ -186,7 +177,6 @@
 			dataIndex: 'completion',
 		},
 	];
-
 	// "Projects" table list of rows and their properties.
 	const tableData = [
 		{
@@ -262,7 +252,6 @@
 			},
 		},
 	];
-
 	export default ({
 		components: {
 			CardBarChart,
@@ -275,19 +264,15 @@
 		},
 		data() {
 			return {
-
 				// Associating table data with its corresponding property.
 				tableData,
-
 				// Associating table columns with its corresponding property.
 				tableColumns,
-
 				// Counter Widgets Stats
 				stats,
 			}
 		},
 	})
-
 </script>
 
 <style lang="scss">

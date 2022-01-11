@@ -31,24 +31,21 @@ let routes = [
 	},
 	{
 		path: '/tables',
-		name: 'Tables',
+		name: 'Users',
 		layout: "dashboard",
 		component: () => import('../views/Tables.vue'),
 	},
 	{
-		path: '/billing',
-		name: 'Billing',
+		path: '/tokens',
+		name: 'Tokens',
 		layout: "dashboard",
-		component: () => import('../views/Billing.vue'),
+		component: () => import('../views/Tokens.vue'),
 	},
 	{
-		path: '/rtl',
-		name: 'RTL',
-		layout: "dashboard-rtl",
-		meta: {
-			layoutClass: 'dashboard-rtl',
-		},
-		component: () => import('../views/RTL.vue'),
+		path: '/rap',
+		name: 'Roles and Permissions',
+		layout: "dashboard",
+		component: () => import('../views/RaP.vue'),
 	},
 	{
 		path: '/Profile',

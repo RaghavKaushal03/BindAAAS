@@ -4,9 +4,9 @@
 		<a-row type="flex">
 			<a-col class="col-content" :span="24" :xl="12">
 				<div class="card-content">
-					<h6>Built by developers</h6>
-					<h5>Muse Dashboard for Ant Design</h5>
-					<p>From colors, cards, typography to complex elements, you will find the full documentation.</p>
+					<h6>Built by Team Pineapple</h6>
+					<h5>AUTHENTICATION AS A SERVICE</h5>
+					<p>DBMS PROJECT</p>
 				</div>
 				<div class="card-footer">
 					<a href="#" size="small">

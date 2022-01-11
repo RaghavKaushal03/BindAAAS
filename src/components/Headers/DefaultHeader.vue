@@ -3,7 +3,7 @@
 	<!-- Layout Header ( Navbar ) -->
 	<a-layout-header>
 		<div class="header-col header-brand">
-			<h6>Muse Dashboard</h6>
+			<h6>AAAS</h6>
 
 			<!-- Trigger Button For Navigation Menu For Small Screens -->
 			<a-button type="link" @click="collapseNav = collapseNav ? 0 : 1 " class="btn-menu-trigger">
@@ -130,7 +130,7 @@
 
 		</div>
 		<div class="header-col header-btn">
-			<a-button href="https://www.creative-tim.com/product/muse-vue-ant-design-dashboard" target="_blank" type="primary" shape="round">FREE DOWNLOAD</a-button>
+			<!-- <a-button href="https://www.creative-tim.com/product/muse-vue-ant-design-dashboard" target="_blank" type="primary" shape="round">FREE DOWNLOAD</a-button> -->
 		</div>
 	</a-layout-header>
 	<!-- / Layout Header ( Navbar ) -->
