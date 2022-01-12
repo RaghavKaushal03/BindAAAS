@@ -175,13 +175,12 @@ import moment from 'moment'
 // import { collection, getDocs, deleteDoc, updateDoc, doc} from "firebase/firestore";
 const columns = [
   {
-    key: "name",
-    title: "NAME",
-    dataIndex: "name",
+    key: "_id",
+    title: "ID",
+    dataIndex: "_id",
     scopedSlots: {
       filterDropdown: "filterDropdown",
       filterIcon: "filterIcon",
-      customRender: "name",
     },
     onFilter: (value, record) =>
       record.name.toString().toLowerCase().includes(value.toLowerCase()),
@@ -194,55 +193,15 @@ const columns = [
     },
   },
   {
-    key: "offering",
-    title: "OFFERING",
-    dataIndex: "offering",
+    key: "token",
+    title: "TOKEN",
+    dataIndex: "token",
     scopedSlots: {
       filterDropdown: "filterDropdown",
       filterIcon: "filterIcon",
-      customRender: "offering",
     },
     onFilter: (value, record) =>
-      record.offering.toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownVisibleChange: (visible) => {
-      if (visible) {
-        setTimeout(() => {
-          this.searchInput.focus();
-        }, 0);
-      }
-    },
-  },
-  {
-    key: "tier",
-    title: "CATEGORY",
-    dataIndex: "tier",
-    scopedSlots: {
-      filterDropdown: "filterDropdown",
-      filterIcon: "filterIcon",
-      customRender: "tier",
-    },
-    onFilter: (value, record) =>
-      record.tier.toString().toLowerCase().includes(value.toLowerCase()),
-    onFilterDropdownVisibleChange: (visible) => {
-      if (visible) {
-        setTimeout(() => {
-          this.searchInput.focus();
-        }, 0);
-      }
-    },
-  },
-  {
-    key: "dueDate",
-    title: "LAST DATE",
-    dataIndex: "dueDate",
-    class: "text-muted",
-    scopedSlots: {
-      filterDropdown: "filterDropdown",
-      filterIcon: "filterIcon",
-      customRender: "dueDate",
-    },
-    onFilter: (value, record) =>
-      record.dueDate.toString().toLowerCase().includes(value.toLowerCase()),
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
     onFilterDropdownVisibleChange: (visible) => {
       if (visible) {
         setTimeout(() => {
@@ -287,25 +246,17 @@ export default {
       },
     };
   },
-//   beforeMount() {
-//     getDocs(collection(db, "companies"))
-//       .then((querySnapshot) => {
-//         querySnapshot.forEach((doc) => {
-//           this.data.push({id: doc.id, ...doc.data()});
-//          // this.tableData.push(doc.data());
-      
-//         });
-//         this.tableData = this.data.map((element) => {
-//           element.dueDate = moment(element.dueDate.toDate())
-//           // element.dueDate = moment(element.dueDate.toDate()).toDate()
-//           //  element.format("YYYY-MM-DD HH:mm:ss")
-//           return element
-//         });
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//       });
-//   },
+  beforeMount() {
+    this.$http.get("/tokens").then(({data}) => {
+      this.tableData = data.data
+    }).catch(err => {
+      console.error(err)
+      this.$notification.error({
+        message: 'Failed to fetch data',
+        description: err.response? err.response.message : err.message
+      });
+    })
+  },
   methods: {
     handleSearch(selectedKeys, confirm, dataIndex) {
       confirm();
