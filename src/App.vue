@@ -23,6 +23,13 @@
 				return "layout-" + ( this.$route.meta.layout || "default" ).toLowerCase() ;
 			}
 		},
+    beforeMount() {
+      let token = JSON.parse(localStorage.getItem("token"))
+      let user = JSON.parse(localStorage.getItem("user"))
+      if (typeof token !== "undefined" && typeof user !== "undefined") {
+        this.$store.dispatch("SET_RESPONSE", {user, token})
+      }
+    }
 	})
 	
 </script>

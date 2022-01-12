@@ -69,30 +69,29 @@
 		},
 		beforeCreate() {
 			// Creates the form and adds to it component's "form" property.
-			// this.form = this.$form.createForm(this, { name: 'normal_login' });
+			this.form = this.$form.createForm(this, { name: 'normal_login' });
 		},
 		methods: {
 			// Handles input validation after submission.
 			handleSubmit(e) {
-			// 	e.preventDefault();
-			// 	this.form.validateFields((err, values) => {
-			// 		if ( !err ) {
-			// 			// console.log('Received values of form: ', values) ;
-            // const auth = getAuth();
-            // signInWithEmailAndPassword(auth, values.email, values.password)
-            //   .then((userCredential) => {
-            //     // Signed in 
-            //     const user = userCredential.user;
-            //     console.log(user)
-            //     this.$router.push({name: "Home"})
-            //     // ...
-            //   })
-            //   .catch((error) => {
-            //     const errorCode = error.code;
-            //     const errorMessage = error.message;
-            //   });
-			// 		}
-				// });
+				e.preventDefault();
+				this.form.validateFields((err, values) => {
+					if ( !err ) {
+						// console.log('Received values of form: ', values) ;
+            this.$http.post("/tokens", {email: values.email, password: values.password}).then(({data}) => {
+              localStorage.setItem("token", JSON.stringify(data.token))
+              localStorage.setItem("user", JSON.stringify(data.user))
+              this.$store.dispatch("SET_RESPONSE", {user: data.user, token: data.token})
+              this.$router.push({name: "Dashboard"})
+            }).catch(err => {
+              console.error(err)
+              this.$notification.error({
+                message: 'Signin failed',
+                description: err.response ? err.response.message : err.message
+              });
+            })
+					}
+				});
 			},
 		},
 	})

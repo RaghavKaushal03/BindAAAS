@@ -1,8 +1,9 @@
-import axios from ‘axios’
+import axios from "axios";
 export default axios.create({
- baseURL: `your API end point`,
- headers: {
- ‘Accept’: ‘application/json’,
- ‘Content-Type’: ‘application/json’
- }
- })
+  // baseURL: "https://bindaaas.herokuapp.com/v1/",
+  baseURL: "http://localhost:5000/v1/",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});

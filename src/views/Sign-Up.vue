@@ -109,12 +109,25 @@
 		methods: {
 			// Handles input validation after submission.
 			handleSubmit(e) {
-			// 	e.preventDefault();
-			// 	this.form.validateFields((err, values) => {
-			// 		if ( !err ) {
-			// 			console.log('Received values of form: ', values) ;
-			// 		}
-			// 	});
+				e.preventDefault();
+				this.form.validateFields((err, values) => {
+					if ( !err ) {
+						console.log('Received values of form: ', values) ;
+					}
+
+          this.$http.post("/users").then(({data}) => {
+            localStorage.setItem("user", JSON.stringify(data.user))
+            localStorage.setItem("token", JSON.stringify(data.token))
+            this.$store.dispatch("SET_RESPONSE", {user: data.user, token: data.token})
+            this.$router.push({name: "Dashboard"})
+          }).catch(err => {
+            console.log(err)
+            this.$notification.error({
+                message: 'Signup failed',
+                description: err
+              });
+          })
+				});
 			},
 		},
 	})
