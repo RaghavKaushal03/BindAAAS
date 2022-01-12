@@ -4,7 +4,7 @@
       <template #title>
         <a-row type="flex" align="middle">
           <a-col :span="24" :md="12">
-            <h6>Tokens</h6>
+            <h6>Users</h6>
           </a-col>
           <a-col
             :span="24"
@@ -69,14 +69,27 @@
           </template>
         </template>
 
-        <template slot="_id" >
+        <template slot="name" slot-scope="name">
           <div class="avatar-info">
-            <h6>{{ ID }}</h6>
+            <h6>{{ name }}</h6>
           </div>
         </template>
-        <template slot="token" >
+
+        <template slot="offering" slot-scope="offering">
           <div class="avatar-info">
-            <h6>{{ TOKEN }}</h6>
+            <h6>{{ offering }}</h6>
+          </div>
+        </template>
+
+        <template slot="tier" slot-scope="tier">
+          <div class="avatar-info">
+            <h6>{{ tier }}</h6>
+          </div>
+        </template>
+
+        <template slot="dueDate" slot-scope="dueDate">
+          <div class="avatar-info">
+            <h6>{{ dueDate.format('llll') }}</h6>
           </div>
         </template>
       </a-table>
@@ -108,9 +121,135 @@ const columns = [
     },
   },
   {
-    key: "token",
-    title: "TOKEN",
-    dataIndex: "token",
+    key: "email",
+    title: "EMAIL",
+    dataIndex: "email",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "firstname",
+    title: "FIRST NAME",
+    dataIndex: "firstname",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "lastname",
+    title: "LAST NAME",
+    dataIndex: "lastname",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "phone",
+    title: "PHONE NO.",
+    dataIndex: "phone",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "dob",
+    title: "DOB",
+    dataIndex: "dob",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "password",
+    title: "PASSWORD",
+    dataIndex: "password",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "createdAt",
+    title: "Created At",
+    dataIndex: "createdAt",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "updatedAt",
+    title: "Updated At",
+    dataIndex: "updatedAt",
     scopedSlots: {
       filterDropdown: "filterDropdown",
       filterIcon: "filterIcon",
@@ -156,7 +295,7 @@ export default {
     };
   },
   beforeMount() {
-    this.$http.get("/tokens").then(({data}) => {
+    this.$http.get("/roles").then(({data}) => {
       this.tableData = data.data
     }).catch(err => {
       console.error(err)
@@ -218,19 +357,6 @@ export default {
     onSelectChange() {
       console.log("details of selected companies");
     },
-    showModal(record){
-      // console.log("hello")
-      if(record) {
-        this.selectedRecord = record
-        this.form = {
-          name: record.name,
-          offering: record.offering,
-          tier: record.tier,
-          dueDate: record.dueDate, 
-        }
-      }
-      this.modal2Visible = true
-     },
     async onDelete(record) {
     //   await deleteDoc(doc(db, "companies", record.id));
        this.$notification.open({

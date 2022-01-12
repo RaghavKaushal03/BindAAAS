@@ -4,7 +4,7 @@
       <template #title>
         <a-row type="flex" align="middle">
           <a-col :span="24" :md="12">
-            <h6>Tokens</h6>
+            <h6>Roles</h6>
           </a-col>
           <a-col
             :span="24"
@@ -69,14 +69,27 @@
           </template>
         </template>
 
-        <template slot="_id" >
+        <template slot="name" slot-scope="name">
           <div class="avatar-info">
-            <h6>{{ ID }}</h6>
+            <h6>{{ name }}</h6>
           </div>
         </template>
-        <template slot="token" >
+
+        <template slot="offering" slot-scope="offering">
           <div class="avatar-info">
-            <h6>{{ TOKEN }}</h6>
+            <h6>{{ offering }}</h6>
+          </div>
+        </template>
+
+        <template slot="tier" slot-scope="tier">
+          <div class="avatar-info">
+            <h6>{{ tier }}</h6>
+          </div>
+        </template>
+
+        <template slot="dueDate" slot-scope="dueDate">
+          <div class="avatar-info">
+            <h6>{{ dueDate.format('llll') }}</h6>
           </div>
         </template>
       </a-table>
@@ -108,9 +121,45 @@ const columns = [
     },
   },
   {
-    key: "token",
-    title: "TOKEN",
-    dataIndex: "token",
+    key: "name",
+    title: "NAME",
+    dataIndex: "name",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "description",
+    title: "DESCRIPTION",
+    dataIndex: "description",
+    scopedSlots: {
+      filterDropdown: "filterDropdown",
+      filterIcon: "filterIcon",
+    },
+    onFilter: (value, record) =>
+      record.name.toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownVisibleChange: (visible) => {
+      if (visible) {
+        setTimeout(() => {
+          this.searchInput.focus();
+        }, 0);
+      }
+    },
+  },
+  {
+    key: "permissions",
+    title: "PERMISSIONS",
+    dataIndex: "permissions",
     scopedSlots: {
       filterDropdown: "filterDropdown",
       filterIcon: "filterIcon",
@@ -156,7 +205,7 @@ export default {
     };
   },
   beforeMount() {
-    this.$http.get("/tokens").then(({data}) => {
+    this.$http.get("/roles").then(({data}) => {
       this.tableData = data.data
     }).catch(err => {
       console.error(err)

@@ -30,10 +30,10 @@ let routes = [
 		component: () => import('../views/Layout.vue'),
 	},
 	{
-		path: '/tables',
+		path: '/users',
 		name: 'Users',
 		layout: "dashboard",
-		component: () => import('../views/Tables.vue'),
+		component: () => import('../views/Users.vue'),
 	},
 	{
 		path: '/tokens',
@@ -42,10 +42,22 @@ let routes = [
 		component: () => import('../views/Tokens.vue'),
 	},
 	{
-		path: '/rap',
-		name: 'Roles and Permissions',
+		path: '/roles',
+		name: 'Roles',
 		layout: "dashboard",
-		component: () => import('../views/RaP.vue'),
+		component: () => import('../views/Roles.vue'),
+	},
+	{
+		path: '/permissions',
+		name: 'Permissions',
+		layout: "dashboard",
+		component: () => import('../views/Permissions.vue'),
+	},
+	{
+		path: '/groups',
+		name: 'Groups',
+		layout: "dashboard",
+		component: () => import('../views/Groups.vue'),
 	},
 	{
 		path: '/Profile',

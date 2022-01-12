@@ -10,7 +10,7 @@
 		<div class="sign-up-header" style="background-image: url('images/bg-signup.jpg')">
 			<div class="content">
 				<h1 class="mb-5">Sign Up</h1>
-				<p class="text-lg">Use these awesome forms to login or create new account in your project for free.</p>
+				<p class="text-lg">Register for our free authentication service - BindAAAS</p>
 			</div>
 		</div>
 		<!-- / Sign Up Image And Headings -->
@@ -18,20 +18,8 @@
 		<!-- Sign Up Form -->
 		<a-card :bordered="false" class="card-signup header-solid h-full" :bodyStyle="{paddingTop: 0}">
 			<template #title>
-				<h5 class="font-semibold text-center">Register With</h5>
+				<h5 class="font-semibold text-center">Register</h5>
 			</template>
-			<div class="sign-up-gateways">
-    			<a-button>
-					<img src="images/logos/logos-facebook.svg" alt="">
-				</a-button>
-    			<a-button>
-					<img src="images/logos/logo-apple.svg" alt="">
-				</a-button>
-    			<a-button>
-					<img src="images/logos/Google__G__Logo.svg.png" alt="">
-				</a-button>
-			</div>
-			<p class="text-center my-25 font-semibold text-muted">Or</p>
 			<a-form
 				id="components-form-demo-normal-login"
 				:form="form"
@@ -44,7 +32,17 @@
 						'name',
 						{ rules: [{ required: true, message: 'Please input your name!' }] },
 						]"
-						placeholder="Name"
+						placeholder="First Name"
+					>
+					</a-input>
+				</a-form-item>
+				<a-form-item class="mb-10">
+					<a-input
+						v-decorator="[
+						'name',
+						{ rules: [{ required: true, message: 'Please input your name!' }] },
+						]"
+						placeholder="Last Name"
 					>
 					</a-input>
 				</a-form-item>
@@ -66,6 +64,39 @@
 						]"
 						type="password"
 						placeholder="Password"
+					>
+					</a-input>
+				</a-form-item>
+				<a-form-item class="mb-5">
+					<a-input
+						v-decorator="[
+						'Date of Birth',
+						{ rules: [{ required: true, message: 'Please input your Password!' }] },
+						]"
+						type="date"
+						placeholder="Date of Birth"
+					>
+					</a-input>
+				</a-form-item>
+				<a-form-item class="mb-5">
+					<a-input
+						v-decorator="[
+						'gender',
+						{ rules: [{ required: true, message: 'Please input your Password!' }] },
+						]"
+						type="gender"
+						placeholder="Gender"
+					>
+					</a-input>
+				</a-form-item>
+				<a-form-item class="mb-5">
+					<a-input
+						v-decorator="[
+						'Phone Number',
+						{ rules: [{ required: true, message: 'Please input your Password!' }] },
+						]"
+						type="number"
+						placeholder="Phone Number"
 					>
 					</a-input>
 				</a-form-item>
