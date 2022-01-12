@@ -4,7 +4,7 @@
       <template #title>
         <a-row type="flex" align="middle">
           <a-col :span="24" :md="12">
-            <h6>Roles</h6>
+            <h6>Groups</h6>
           </a-col>
           <a-col
             :span="24"

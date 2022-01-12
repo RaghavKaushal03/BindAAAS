@@ -108,10 +108,9 @@
 	// Counter Widgets stats
 	const stats = [
 		{
-			title: "Today’s Sales",
-			value: 53000,
-			prefix: "$",
-			suffix: "+30%",
+			title: "Today’s Groups",
+			value: 2,
+			suffix: "+50%",
 			icon: `
 						<svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M8.43338 7.41784C8.58818 7.31464 8.77939 7.2224 9 7.15101L9.00001 8.84899C8.77939 8.7776 8.58818 8.68536 8.43338 8.58216C8.06927 8.33942 8 8.1139 8 8C8 7.8861 8.06927 7.66058 8.43338 7.41784Z" fill="#111827"/>
@@ -121,8 +120,8 @@
 		},
 		{
 			title: "Today’s Users",
-			value: 3200,
-			suffix: "+20%",
+			value: 2,
+			suffix: "+50%",
 			icon: `
 						<svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M9 6C9 7.65685 7.65685 9 6 9C4.34315 9 3 7.65685 3 6C3 4.34315 4.34315 3 6 3C7.65685 3 9 4.34315 9 6Z" fill="#111827"/>
@@ -133,19 +132,18 @@
 		},
 		{
 			title: "New Clients",
-			value: 1200,
+			value: 1,
 			prefix: "+",
 			status: "danger",
-			suffix: "-20%",
+			suffix: "+50%",
 			icon: `
 						<svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M3.17157 5.17157C4.73367 3.60948 7.26633 3.60948 8.82843 5.17157L10 6.34315L11.1716 5.17157C12.7337 3.60948 15.2663 3.60948 16.8284 5.17157C18.3905 6.73367 18.3905 9.26633 16.8284 10.8284L10 17.6569L3.17157 10.8284C1.60948 9.26633 1.60948 6.73367 3.17157 5.17157Z" fill="#111827"/>
 						</svg>`,
 		},
 		{
-			title: "New Orders",
-			value: 13200,
-			prefix: "$",
+			title: "New Tokens Created",
+			value: 132,
 			suffix: "+10%",
 			icon: `
 						<svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -186,7 +184,7 @@
 				logo: 'images/logos/logo-shopify.svg',
 			},
 			members: [ "images/face-1.jpg", "images/face-4.jpg", "images/face-2.jpg", "images/face-3.jpg", ],
-			budget: '$14,000',
+			budget: '$1,000',
 			completion: 60,
 		},
 		{
