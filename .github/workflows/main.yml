@@ -1,0 +1,25 @@
+name: CD
+'on':
+  push:
+    branches:
+      - main
+      - master
+jobs:
+  Build-and-Deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: "production"
+      BASE_URL: "https://bindaaas.herokuapp.com/v1/"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Bundle code
+        run: npm run build
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # cname: in-pursuit.nisb.in
+
