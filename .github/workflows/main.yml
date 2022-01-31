@@ -7,9 +7,6 @@ name: CD
 jobs:
   Build-and-Deploy:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: "production"
-      BASE_URL: "https://bindaaas.herokuapp.com/v1/"
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
